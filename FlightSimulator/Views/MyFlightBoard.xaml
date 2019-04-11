@@ -31,6 +31,6 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <local:FlightBoard Grid.Row="1" Grid.ColumnSpan="2" Background="GhostWhite"></local:FlightBoard>
+        <local:FlightBoard Grid.Row="1" Grid.ColumnSpan="2"></local:FlightBoard>
     </Grid>
 </UserControl>

@@ -6,19 +6,22 @@
              xmlns:local="clr-namespace:FlightSimulator.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Slider x:Name="sizeSlider" Minimum="4" TickPlacement="BottomRight"
+    <Viewbox>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Slider x:Name="sizeSlider" Minimum="4" TickPlacement="BottomRight"
         TickFrequency="4" Maximum="40" Margin="4" Value="10"/>
-        <TextBlock Text="Watch the text size!" Margin="4"
-        FontSize="{Binding ElementName=sizeSlider, Path=Value}"/>
-        <local:Joystick></local:Joystick>
-    </Grid>
+            <TextBlock Text="Aailron" Margin="4"/>
+            <local:Joystick Grid.Row="1" Grid.Column="1"></local:Joystick>
+        </Grid>
+    </Viewbox>
 </UserControl>
