@@ -19,6 +19,15 @@ namespace FlightSimulator.Model
             connect();
         }
 
+        public void connect()
+        {
+            IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ApplicationSettingsModel.Instance.FlightServerIP),
+            ApplicationSettingsModel.Instance.FlightCommandPort);
+            tcpClient = new TcpClient();
+            tcpClient.Connect(ep);
+            Console.WriteLine("You are connected");
+        }
+
         public void openThread()
         {
             Thread thread = new Thread(new ThreadStart(sendMessage));
@@ -46,16 +55,6 @@ namespace FlightSimulator.Model
                     Console.WriteLine("Result = {0}", result);
                 }
             }
-        }
-
-        public void connect()
-        {
-            IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ApplicationSettingsModel.Instance.FlightServerIP),
-            ApplicationSettingsModel.Instance.FlightCommandPort);
-            tcpClient = new TcpClient();
-            tcpClient.Connect(ep);
-            Console.WriteLine("You are connected");
-            // tcpClient.Close();
         }
     }
 }

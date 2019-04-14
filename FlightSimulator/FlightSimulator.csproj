@@ -68,6 +68,7 @@
     <Compile Include="Model\CommandHandler.cs" />
     <Compile Include="Model\Commands.cs" />
     <Compile Include="Model\EventArgs\VirtualJoystickEventArgs.cs" />
+    <Compile Include="Model\Info.cs" />
     <Compile Include="Model\Interface\ISettingsModel.cs" />
     <Compile Include="ViewModels\BaseNotify.cs" />
     <Compile Include="ViewModels\BindSettings.cs" />

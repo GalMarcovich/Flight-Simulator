@@ -25,13 +25,20 @@ namespace FlightSimulator.ViewModels
             {
 
             }
+
+
+        }
+        private void OnClick()
+        {
+            Settings settings = new Settings();
+            settings.ShowDialog();
         }
 
         public ICommand ConnectCommand
         {
             get
             {
-                return _connectCommand ?? (_connectCommand = new CommandHandler(() => OnClick()));
+                return _connectCommand ?? (_connectCommand = new CommandHandler(() => OnClickConnect()));
             }
             set
             {
@@ -39,9 +46,10 @@ namespace FlightSimulator.ViewModels
             }
         }
 
-        private void OnClick()
+        private void OnClickConnect()
         {
-
+            Commands command = new Commands();
+            Info info = new Info();
         }
     }
 }

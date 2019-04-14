@@ -15,7 +15,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Button Content="Connect" HorizontalAlignment="Right" Margin="7">
+        <Button Content="Connect" HorizontalAlignment="Right" Margin="7" Command="{Binding ConnectCommand}">
             <Button.Background>
                 <LinearGradientBrush>
                     <GradientStop Color="Lavender" Offset="0" />
