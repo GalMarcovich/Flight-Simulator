@@ -71,6 +71,7 @@
     <Compile Include="Model\Info.cs" />
     <Compile Include="Model\Interface\ISettingsModel.cs" />
     <Compile Include="ViewModels\BaseNotify.cs" />
+    <Compile Include="ViewModels\BindAutoPilot.cs" />
     <Compile Include="ViewModels\BindSettings.cs" />
     <Compile Include="ViewModels\FlightBoardViewModel.cs" />
     <Compile Include="ViewModels\Windows\SettingsWindowViewModel.cs" />

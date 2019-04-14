@@ -15,10 +15,13 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="AutoPilotText" Grid.RowSpan="2" Grid.ColumnSpan="2"  Height="400"
-                 VerticalAlignment="Top" BorderBrush="Blue"/>
+        <TextBox x:Name="AutoPilotText" Grid.ColumnSpan="2"  Height="400" 
+                 VerticalAlignment="Top" BorderBrush="Blue" AcceptsReturn="True" 
+                 Text="{Binding Line, UpdateSourceTrigger=PropertyChanged}" Background="{Binding Color}"/>
+       
+        
         <Button Content=" OK " HorizontalAlignment="Right" Margin="10" FontSize="17" FontWeight="Bold" 
-                Grid.Row="1" Grid.Column="0">
+                Grid.Row="1" Grid.Column="0" Command="{Binding ClickCommand}">
             <Button.Background>
                 <LinearGradientBrush>
                     <GradientStop Color="Lavender" Offset="0" />
@@ -27,7 +30,7 @@
             </Button.Background>
         </Button>
         <Button Content=" Clear " HorizontalAlignment="Left" Margin="10" FontSize="17" FontWeight="Bold"
-                Grid.Row="1" Grid.Column="1">
+                Grid.Row="1" Grid.Column="1" Command="{Binding ClearCommand}">
             <Button.Background>
                 <LinearGradientBrush>
                     <GradientStop Color="Lavender" Offset="0" />
