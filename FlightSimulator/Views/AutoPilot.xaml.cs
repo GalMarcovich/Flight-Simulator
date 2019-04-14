@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using FlightSimulator.ViewModels;
 
 namespace FlightSimulator.Views
 {
     /// <summary>
-    /// Interaction logic for MyFlightBoard.xaml
+    /// Interaction logic for AutoPilot.xaml
     /// </summary>
-    public partial class MyFlightBoard : UserControl
+    public partial class AutoPilot : UserControl
     {
-        public MyFlightBoard()
+        public AutoPilot()
         {
             InitializeComponent();
-            this.DataContext = new BindSettings();
         }
     }
 }

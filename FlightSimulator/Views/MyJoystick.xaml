@@ -42,10 +42,10 @@
                    HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Grid.Row="2" Grid.Column="2" Margin="80">
         </TextBlock>
         <TextBlock Text="0.0" VerticalAlignment="Center" HorizontalAlignment="Left"
-                   FontSize="20" FontWeight="Bold" Grid.Row="0" Grid.Column="2" Margin="80">
+                   FontSize="16" FontWeight="Bold" Grid.Row="0" Grid.Column="2" Margin="80">
         </TextBlock>
         <TextBlock Text="0.0" VerticalAlignment="Bottom" HorizontalAlignment="Center"
-                   FontSize="20" FontWeight="Bold" Grid.Row="0" Grid.Column="2" Margin="50">
+                   FontSize="16" FontWeight="Bold" Grid.Row="0" Grid.Column="2" Margin="50">
             <TextBlock.LayoutTransform>
                 <RotateTransform Angle="90"/>
             </TextBlock.LayoutTransform>

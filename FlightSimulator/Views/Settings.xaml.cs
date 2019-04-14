@@ -10,21 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using FlightSimulator.ViewModels;
 
 namespace FlightSimulator.Views
 {
     /// <summary>
-    /// Interaction logic for MyFlightBoard.xaml
+    /// Interaction logic for Settings.xaml
     /// </summary>
-    public partial class MyFlightBoard : UserControl
+    public partial class Settings : Window
     {
-        public MyFlightBoard()
+        public Settings()
         {
             InitializeComponent();
-            this.DataContext = new BindSettings();
         }
     }
 }
