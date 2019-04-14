@@ -15,13 +15,11 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="AutoPilotText" Grid.ColumnSpan="2"  Height="400" 
-                 VerticalAlignment="Top" BorderBrush="Blue" AcceptsReturn="True" 
+        <TextBox x:Name="AutoPilotText" Grid.ColumnSpan="2"  Height="400" FontWeight="Bold"
+                 VerticalAlignment="Top" BorderBrush="BlueViolet" AcceptsReturn="True" 
                  Text="{Binding Line, UpdateSourceTrigger=PropertyChanged}" Background="{Binding Color}"/>
-       
-        
         <Button Content=" OK " HorizontalAlignment="Right" Margin="10" FontSize="17" FontWeight="Bold" 
-                Grid.Row="1" Grid.Column="0" Command="{Binding ClickCommand}">
+                Grid.Row="1" Grid.Column="0" Command="{Binding OKCommand}">
             <Button.Background>
                 <LinearGradientBrush>
                     <GradientStop Color="Lavender" Offset="0" />

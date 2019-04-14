@@ -52,10 +52,10 @@
         </TextBlock>
         <Slider x:Name="rudderSlider" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom"
                 HorizontalAlignment="Center" Maximum="1" Minimum="-1" TickPlacement="BottomRight" TickFrequency="0.1" 
-                Width="370" Margin="60" Orientation="Horizontal"/>
+                Width="370" Margin="60" Orientation="Horizontal" Value="{Binding RudderCommand}"/>
         <Slider x:Name="throttleSlider" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" VerticalAlignment="Center"
                 HorizontalAlignment="Left" Maximum="1" Minimum="-1" TickPlacement="BottomRight" TickFrequency="0.1" 
-                Height="330" Margin="90" Orientation="Vertical"/>
+                Height="330" Margin="90" Orientation="Vertical" Value="{Binding ThrottleCommand}"/>
         <local:Joystick Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3"></local:Joystick>
     </Grid>
 </UserControl>

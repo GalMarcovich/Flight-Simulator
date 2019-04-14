@@ -14,6 +14,20 @@ namespace FlightSimulator.Model
     {
         TcpClient tcpClient;
 
+        private static Commands m_Instance = null;
+
+        public static Commands Instance
+        {
+            get
+            {
+                if (m_Instance == null)
+                {
+                    m_Instance = new Commands();
+                }
+                return m_Instance;
+            }
+        }
+
         public Commands()
         {
             connect();
@@ -28,33 +42,38 @@ namespace FlightSimulator.Model
             Console.WriteLine("You are connected");
         }
 
-        public void openThread()
+        public void openThread(string text)
         {
-            Thread thread = new Thread(new ThreadStart(sendMessage));
+            string[] splited = Parse(text);
+            Thread thread = new Thread(() => sendMessage(splited, tcpClient));
             thread.Start();
-
         }
 
-        public void sendMessage()
+        public void sendMessage(string[] splited, TcpClient tcpClient)
         {
             NetworkStream ns = tcpClient.GetStream();
-            using (NetworkStream stream = tcpClient.GetStream())
-            using (StreamReader reader = new StreamReader(stream))
-            using (StreamWriter writer = new StreamWriter(stream))
+            foreach (string split in splited)
             {
-                while (true)
-                {
-                    // Send data to server
-                    Console.Write("Please enter a number: ");
-                    string num = Console.ReadLine();
-                    num += "\r\n";
-                    writer.Write(num);
-                    writer.Flush();
-                    // Get result from server
-                    string result = reader.ReadLine();
-                    Console.WriteLine("Result = {0}", result);
-                }
+                // Send data to server
+                Console.Write("Please enter a number: ");
+                string command = split;
+                //string num = Console.ReadLine();
+                command += "\r\n";
+                byte[] buffer = Encoding.ASCII.GetBytes(command);
+                ns.Write(buffer, 0, buffer.Length);
+                //writer.Write(num);
+                //writer.Flush();
+                // Get result from server
+                //string result = reader.ReadLine();
+                //Console.WriteLine("Result = {0}", result);
             }
+        }
+
+        private string[] Parse(string line)
+        {
+            string[] newLine = { "\r\n" };
+            string[] input = line.Split(newLine, StringSplitOptions.None);
+            return input;
         }
     }
 }

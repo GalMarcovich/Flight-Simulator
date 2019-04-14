@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using FlightSimulator.Model;
 using System.Windows;
 using System.Windows.Input;
+using FlightSimulator.Model.Interface;
 
 namespace FlightSimulator.ViewModels
 {
+
     class BindAutoPilot : BaseNotify
     {
-        string[] input;
+        private string text;
         string line;
         public BindAutoPilot()
         {
@@ -47,22 +49,18 @@ namespace FlightSimulator.ViewModels
             }
             private set { }
         }
-        private ICommand _clickCommand;
-        public ICommand ClickCommand
+        private ICommand _okCommand;
+        public ICommand OKCommand
         {
             get
             {
-                return _clickCommand ?? (_clickCommand = new CommandHandler(() => OnClick()));
+                return _okCommand ?? (_okCommand = new CommandHandler(() => OkClick()));
             }
         }
-        private void OnClick()
+        private void OkClick()
         {
-            Parse(line);
-
-            foreach (string arg in input)
-            {
-                MessageBox.Show(arg);
-            }
+            Commands.Instance.openThread(line);
+      
         }
 
         private ICommand _clearCommand;
@@ -77,12 +75,6 @@ namespace FlightSimulator.ViewModels
         {
             line = "";
             NotifyPropertyChanged(line);
-        }
-
-        private void Parse(string line)
-        {
-            string[] newLine = { "\r\n" };
-            input = line.Split(newLine, StringSplitOptions.None);
         }
     }
 }

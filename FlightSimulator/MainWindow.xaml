@@ -14,10 +14,10 @@
         </Grid.ColumnDefinitions>
         <Viewbox Grid.Column="1">
             <TabControl Height="550">
-                <TabItem Header="Manual">
+                <TabItem Header="Manual" FontWeight="Bold">
                     <Controls:MyJoystick></Controls:MyJoystick>
                 </TabItem>
-                <TabItem Header="Auto Pilot">
+                <TabItem Header="Auto Pilot" FontWeight="Bold">
                     <Controls:AutoPilot></Controls:AutoPilot>
                 </TabItem>
             </TabControl>

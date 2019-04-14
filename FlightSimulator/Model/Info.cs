@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+using System.Text;
+
+using System.Net;
 using System.Net.Sockets;
+using System.Collections.Generic;
 
 namespace FlightSimulator.Model
 {
@@ -13,16 +12,29 @@ namespace FlightSimulator.Model
     {
         TcpClient _client;
 
+        private static Info m_Instance = null;
+
+        public static Info Instance
+        {
+            get
+            {
+                if (m_Instance == null)
+                {
+                    m_Instance = new Info();
+                }
+                return m_Instance;
+            }
+        }
+
         public Info()
         {
             connect();
             Thread thread = new Thread(() => listen(_client));
             thread.Start();
-
         }
+
         public void connect()
         {
-
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ApplicationSettingsModel.Instance.FlightServerIP),
                 ApplicationSettingsModel.Instance.FlightInfoPort);
             TcpListener listener = new TcpListener(ep);
@@ -30,8 +42,6 @@ namespace FlightSimulator.Model
             //Console.WriteLine("Waiting for client connections...");
             _client = listener.AcceptTcpClient();
             Console.WriteLine("Info channel: Client connected");
-
-
         }
 
         public static void listen(TcpClient _client)
@@ -40,7 +50,6 @@ namespace FlightSimulator.Model
             string[] splitMsg = new string[23];
             string lon, lat;
             NetworkStream ns = _client.GetStream();
-
             while (true)
             {
                 if (_client.ReceiveBufferSize > 0)
