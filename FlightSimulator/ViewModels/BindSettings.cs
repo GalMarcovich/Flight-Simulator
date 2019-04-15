@@ -48,7 +48,7 @@ namespace FlightSimulator.ViewModels
 
         private void OnClickConnect()
         {
-            Info info = new Info();
+            Info.Instance.connect();
             //Commands command = new Commands();
             Commands.Instance.connect();
         }

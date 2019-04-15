@@ -10,55 +10,51 @@ using FlightSimulator.Model.Interface;
 
 namespace FlightSimulator.ViewModels
 {
-    class BindJoystick : BaseNotify
+    class BindJoystick
     {
-        string line;
-
-        public BindJoystick()
-        {
-            line = "";
-        }
-
-        public string Line
+        public float ThrottleCommand
         {
             set
             {
-                string input = value.ToString();
-                line = input.Substring(0, 3);
+                string throttleLine = "set controls/engines/current-engine/throttle ";
+                throttleLine += value;
+                throttleLine += "\r\n";
+                Commands.Instance.openThread(throttleLine);
             }
         }
 
-        private ICommand _throttleCommand;
-        public ICommand ThrottleCommand
+        public float RudderCommand
         {
-            get
+            set
             {
-                return _throttleCommand ?? (_throttleCommand = new CommandHandler(() => throttleSlider()));
+                string rudderLine = "set controls/flight/rudder ";
+                rudderLine += value;
+                rudderLine += "\r\n";
+                Commands.Instance.openThread(rudderLine);
             }
         }
-        private void throttleSlider()
-        {
-            string throttleLine = "set controls/engines/current-engine/throttle ";
-            throttleLine += line;
-            throttleLine += "\r\n";
-            Commands.Instance.openThread(throttleLine);
 
-        }
-
-        private ICommand _rudderCommand;
-        public ICommand RudderCommand
+        public float ElevatorCommand
         {
-            get
+            set
             {
-                return _rudderCommand ?? (_rudderCommand = new CommandHandler(() => RudderSlider()));
+                string ElevatorLine = "set /controls/flight/elevator ";
+                ElevatorLine += value;
+                ElevatorLine += "\r\n";
+                Commands.Instance.openThread(ElevatorLine);
             }
         }
-        private void RudderSlider()
+
+        public float AileronCommand
         {
-            string rudderLine = "set controls/flight/rudder ";
-            rudderLine += line;
-            rudderLine += "\r\n";
-            Commands.Instance.openThread(rudderLine);
+            set
+            {
+                string AileronLine = "set /controls/flight/aileron ";
+                AileronLine += value;
+                AileronLine += "\r\n";
+                Commands.Instance.openThread(AileronLine);
+            }
         }
+
     }
 }

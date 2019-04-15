@@ -12,6 +12,8 @@ namespace FlightSimulator.Model
 {
     class Commands
     {
+        bool IsConnect = false;
+
         TcpClient tcpClient;
 
         private static Commands m_Instance = null;
@@ -30,7 +32,7 @@ namespace FlightSimulator.Model
 
         public Commands()
         {
-            connect();
+            //connect();
         }
 
         public void connect()
@@ -39,6 +41,7 @@ namespace FlightSimulator.Model
             ApplicationSettingsModel.Instance.FlightCommandPort);
             tcpClient = new TcpClient();
             tcpClient.Connect(ep);
+            IsConnect = true;
             Console.WriteLine("You are connected");
         }
 
@@ -51,6 +54,10 @@ namespace FlightSimulator.Model
 
         public void sendMessage(string[] splited, TcpClient tcpClient)
         {
+            if (!IsConnect)
+            {
+                return;
+            }
             NetworkStream ns = tcpClient.GetStream();
             foreach (string split in splited)
             {

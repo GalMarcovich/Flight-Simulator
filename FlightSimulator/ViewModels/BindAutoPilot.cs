@@ -13,7 +13,6 @@ namespace FlightSimulator.ViewModels
 
     class BindAutoPilot : BaseNotify
     {
-        private string text;
         string line;
         public BindAutoPilot()
         {
