@@ -14,25 +14,30 @@ namespace FlightSimulator.ViewModels
     class BindAutoPilot : BaseNotify
     {
         string line;
+
+        // constructor
         public BindAutoPilot()
         {
             line = "";
         }
 
+        //to create the property
         public string Line
         {
             get
             {
-                // change color if needed
+                // change color if needed, update it, the color
                 NotifyPropertyChanged("Color");
                 return line;
             }
             set
             {
+                // update value
                 line = value;
             }
         }
 
+        //create the property
         public string Color
         {
             get

@@ -15,7 +15,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Button Content="Connect" HorizontalAlignment="Right" Margin="7" Command="{Binding ConnectCommand}">
+        <Button Content="Connect" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="7" Command="{Binding ConnectCommand}">
             <Button.Background>
                 <LinearGradientBrush>
                     <GradientStop Color="Lavender" Offset="0" />
@@ -23,7 +23,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button Content="Settings" Grid.Column="1" HorizontalAlignment="Left" Margin="7"
+        <Button Content="Settings" Grid.Column="1" HorizontalAlignment="Center" Margin="7"
                 Command="{Binding SettingsCommand}">
             <Button.Background>
                 <LinearGradientBrush>
@@ -32,6 +32,17 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
+
+        <Button Content="DisConnect" HorizontalAlignment="Center" Margin="7"
+                Command="{Binding DisConnectCommand}">
+            <Button.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="Lavender" Offset="0" />
+                    <GradientStop Color="White" Offset="1" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        
         <local:FlightBoard Grid.Row="1" Grid.ColumnSpan="2"></local:FlightBoard>
     </Grid>
 </UserControl>

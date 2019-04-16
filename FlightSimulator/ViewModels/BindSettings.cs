@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using FlightSimulator.Model;
@@ -14,6 +15,9 @@ namespace FlightSimulator.ViewModels
         private ICommand _settingsCommand;
 
         private ICommand _connectCommand;
+
+        private ICommand _disConnectCommand;
+
 
         public ICommand SettingsCommand
         {
@@ -34,6 +38,25 @@ namespace FlightSimulator.ViewModels
             settings.ShowDialog();
         }
 
+
+        public ICommand DisConnectCommand
+        {
+            get
+            {
+                return _disConnectCommand ?? (_disConnectCommand = new CommandHandler(() => OnClickConnect()));
+            }
+        }
+
+
+
+        private void OnClickDisConnect()
+        {
+            Info.Instance.shouldStop = true;
+            Commands.Instance.disConnect();
+        }
+
+
+
         public ICommand ConnectCommand
         {
             get
@@ -48,9 +71,24 @@ namespace FlightSimulator.ViewModels
 
         private void OnClickConnect()
         {
-            Info.Instance.connect();
-            //Commands command = new Commands();
-            Commands.Instance.connect();
+            if (!Commands.Instance.getIsConnect())
+            {
+                new Thread(() =>
+            {
+
+                Info.Instance.connect();
+                Commands.Instance.connect();
+
+            }).Start();
+            }
+            else
+            {
+                new Thread(() =>
+                {
+                    Commands.Instance.disConnect();
+                    Commands.Instance.connect();
+                }).Start();
+            }
         }
     }
 }
