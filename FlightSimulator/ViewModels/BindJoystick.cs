@@ -14,6 +14,7 @@ namespace FlightSimulator.ViewModels
     {
         public float ThrottleCommand
         {
+            // when changing the throttle
             set
             {
                 string throttleLine = "set controls/engines/current-engine/throttle ";
@@ -25,6 +26,7 @@ namespace FlightSimulator.ViewModels
 
         public float RudderCommand
         {
+            // when changing the rudder
             set
             {
                 string rudderLine = "set controls/flight/rudder ";
@@ -36,6 +38,7 @@ namespace FlightSimulator.ViewModels
 
         public float ElevatorCommand
         {
+            // when changing the elevator
             set
             {
                 string ElevatorLine = "set /controls/flight/elevator ";
@@ -47,6 +50,7 @@ namespace FlightSimulator.ViewModels
 
         public float AileronCommand
         {
+            // when changing the ailron
             set
             {
                 string AileronLine = "set /controls/flight/aileron ";
@@ -55,6 +59,6 @@ namespace FlightSimulator.ViewModels
                 Commands.Instance.openThread(AileronLine);
             }
         }
-
     }
 }
+

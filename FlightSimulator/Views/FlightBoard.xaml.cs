@@ -45,11 +45,12 @@ namespace FlightSimulator.Views
 
         private void Vm_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            // if the property is Lon or Lat - update the map
             if (e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon"))
             {
-                Console.WriteLine("galfb");
-                Console.WriteLine(viewM.Lat);
-                Console.WriteLine(viewM.Lon);
+                //Console.WriteLine("galfb");
+                //Console.WriteLine(viewM.Lat);
+                //Console.WriteLine(viewM.Lon);
 
                 Point p1 = new Point(viewM.Lat, viewM.Lon);
                 planeLocations.AppendAsync(Dispatcher, p1);

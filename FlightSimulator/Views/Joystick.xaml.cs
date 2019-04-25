@@ -135,7 +135,7 @@ namespace FlightSimulator.Views
         private void Knob_MouseMove(object sender, MouseEventArgs e)
         {
             ///!!!!!!!!!!!!!!!!!
-            /// YOU MUST CHANGE THE FUNCTION!!!!
+            /// YOU MUST CHANGE THE FUNCTION!!!! - CHANGED ;)
             ///!!!!!!!!!!!!!!
             if (!Knob.IsMouseCaptured) return;
 

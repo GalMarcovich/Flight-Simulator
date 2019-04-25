@@ -36,23 +36,27 @@ namespace FlightSimulator.Model
 
         public void disConnect()
         {
+            // when pressing the button disConnect, change the boollean to false
             IsConnect = false;
             tcpClient.Close();
         }
 
         public void connect()
         {
+            // connecting as client
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ApplicationSettingsModel.Instance.FlightServerIP),
             ApplicationSettingsModel.Instance.FlightCommandPort);
             tcpClient = new TcpClient();
             tcpClient.Connect(ep);
             IsConnect = true;
-            Console.WriteLine("You are connected");
+            //Console.WriteLine("You are connected");
         }
 
         public void openThread(string text)
         {
+            // split the message received
             string[] splited = Parse(text);
+            // open a thread
             threadC = new Thread(() => sendMessage(splited, tcpClient));
             threadC.Start();
         }
@@ -69,6 +73,7 @@ namespace FlightSimulator.Model
 
         public void sendMessage(string[] splited, TcpClient tcpClient)
         {
+            // if not connected anymore - return and do not execute the command received
             if (!IsConnect)
             {
                 return;
@@ -79,18 +84,11 @@ namespace FlightSimulator.Model
                 // Send data to server
                 Console.Write("Please enter a number: ");
                 string command = split;
-                //string num = Console.ReadLine();
                 command += "\r\n";
                 byte[] buffer = Encoding.ASCII.GetBytes(command);
                 ns.Write(buffer, 0, buffer.Length);
                 Thread.Sleep(2000);
-                //writer.Write(num);
-                //writer.Flush();
-                // Get result from server
-                //string result = reader.ReadLine();
-                //Console.WriteLine("Result = {0}", result);
             }
-            //tcpClient.Close();
         }
 
         private string[] Parse(string line)

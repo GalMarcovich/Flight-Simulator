@@ -18,7 +18,6 @@ namespace FlightSimulator.ViewModels
 
         private ICommand _disConnectCommand;
 
-
         public ICommand SettingsCommand
         {
             get
@@ -29,15 +28,14 @@ namespace FlightSimulator.ViewModels
             {
 
             }
-
-
         }
+
+        // when pressing the settings button - open the window of the settings
         private void OnClick()
         {
             Settings settings = new Settings();
             settings.ShowDialog();
         }
-
 
         public ICommand DisConnectCommand
         {
@@ -47,16 +45,13 @@ namespace FlightSimulator.ViewModels
             }
         }
 
-
-
+        // when pressing the disConnect button - change the boolean "shouldStop" to true and disConnect
         private void OnClickDisConnect()
         {
             Info.Instance.shouldStop = true;
             Commands.Instance.disConnect();
         }
-
-
-
+       
         public ICommand ConnectCommand
         {
             get
@@ -69,18 +64,19 @@ namespace FlightSimulator.ViewModels
             }
         }
 
+        // when pressing the connect button - connect
         private void OnClickConnect()
         {
+            // if not connected - open a new thread and connect
             if (!Commands.Instance.getIsConnect())
             {
                 new Thread(() =>
-            {
-
-                Info.Instance.connect();
-                Commands.Instance.connect();
-
-            }).Start();
+                {
+                    Info.Instance.connect();
+                    Commands.Instance.connect();
+                }).Start();
             }
+            // if already connected - first disConnect and then connect again
             else
             {
                 new Thread(() =>
@@ -92,3 +88,4 @@ namespace FlightSimulator.ViewModels
         }
     }
 }
+

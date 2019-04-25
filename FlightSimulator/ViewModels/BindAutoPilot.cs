@@ -21,12 +21,12 @@ namespace FlightSimulator.ViewModels
             line = "";
         }
 
-        //to create the property
+        // to create the property Line
         public string Line
         {
             get
             {
-                // change color if needed, update it, the color
+                // change color if needed, update the color
                 NotifyPropertyChanged("Color");
                 return line;
             }
@@ -37,7 +37,7 @@ namespace FlightSimulator.ViewModels
             }
         }
 
-        //create the property
+        // create the property Color
         public string Color
         {
             get
@@ -53,7 +53,9 @@ namespace FlightSimulator.ViewModels
             }
             private set { }
         }
+
         private ICommand _okCommand;
+
         public ICommand OKCommand
         {
             get
@@ -61,13 +63,18 @@ namespace FlightSimulator.ViewModels
                 return _okCommand ?? (_okCommand = new CommandHandler(() => OkClick()));
             }
         }
+
+        // when clicking the button OK - open a thread, reset the line and change background to white
         private void OkClick()
         {
             Commands.Instance.openThread(line);
-      
+            line = "";
+            NotifyPropertyChanged("Color");
+
         }
 
         private ICommand _clearCommand;
+
         public ICommand ClearCommand
         {
             get
@@ -75,6 +82,8 @@ namespace FlightSimulator.ViewModels
                 return _clearCommand ?? (_clearCommand = new CommandHandler(() => ClearClick()));
             }
         }
+
+        // when clicking the button Clear - reset the line and change background to white
         private void ClearClick()
         {
             line = "";
