@@ -41,7 +41,7 @@ namespace FlightSimulator.ViewModels
         {
             get
             {
-                return _disConnectCommand ?? (_disConnectCommand = new CommandHandler(() => OnClickConnect()));
+                return _disConnectCommand ?? (_disConnectCommand = new CommandHandler(() => OnClickDisConnect()));
             }
         }
 
